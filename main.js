@@ -1,4 +1,4 @@
-const URL = 'https://api.thecatapi.com/v1/images/search?limit=3'
+const URL = 'https://api.thecatapi.com/v1/images/search?limit=3&api_key=202375a2-f56a-4091-8c61-edc226939576';
 const button = document.querySelector('button');
 /*
 // PROMESAS
