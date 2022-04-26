@@ -1,7 +1,6 @@
-const URL = 'https://api.thecatapi.com/v1/images/search'
-const imgHTML = document.querySelector('img');
+const URL = 'https://api.thecatapi.com/v1/images/search?limit=3'
 const button = document.querySelector('button');
-
+/*
 // PROMESAS
 
 function renderCat(){
@@ -16,21 +15,23 @@ function renderCat(){
 renderCat();
 
 button.onclick = () => {renderCat()};
-
+*/
 
 // ASYNC - AWAIT
 
-async function getData(){
+async function reloadCat(){
     const response = await fetch(URL);
-    const data = await response.json();
-    return data;
+    const cats = await response.json();
+
+    const imgHTML1 = document.getElementById('img1');
+    const imgHTML2 = document.getElementById('img2');
+    const imgHTML3 = document.getElementById('img3');
+
+    imgHTML1.src = cats[0].url;
+    imgHTML2.src = cats[1].url;
+    imgHTML3.src = cats[2].url;
 }
 
-async function renderCat(){
-    const img = await getData();
-    imgHTML.src = img[0].url;
-}
+reloadCat()
 
-renderCat()
-
-button.onclick = () => {renderCat()};
+button.onclick = () => {reloadCat()};
