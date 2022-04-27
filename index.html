@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
     <title>Gatos aleatorios</title>
-    <style>
-        img{
-            width: 30%;
-            height: auto;
-        }
-    </style>
-</head>
-<body>
-    <h1>Gatos Aleatorios</h1>
-    <img id="img1" alt="Gato Aleatorio">
-    <img id="img2" alt="Gato Aleatorio">
-    <img id="img3" alt="Gato Aleatorio">
-    <button>Random</button>
+  </head>
+  <body>
+    <h1>Gatapp</h1>
+
+    <section id="randomCats">
+      <h2>Gatos Aleatorios</h2>
+      <div class="randomCats__container">
+        <article>
+            <img id="img1" alt="Gato Aleatorio" />
+            <button class="btn_f_save">Guardar en favoritos</button>
+          </article>
+          <article>
+            <img id="img2" alt="Gato Aleatorio" />
+            <button class="btn_f_save">Guardar en favoritos</button>
+          </article>
+          <article>
+            <img id="img3" alt="Gato Aleatorio" />
+            <button class="btn_f_save">Guardar en favoritos</button>
+          </article>
+      </div>
+      <button id="randomCat">Random</button>
+    </section>
+
+    <section id="favoritesCats">
+      <h2>Gatos Favoritos</h2>
+      <article>
+        <img id="img1" alt="Gato Aleatorio" />
+        <button>Sacar de favoritos</button>
+      </article>
+    </section>
+
     <script src="./main.js"></script>
-</body>
+  </body>
 </html>
