@@ -31,6 +31,10 @@ section{
     margin: 16px;
     margin-bottom: 54px;
 }
+section .randomCats__title{
+    display: flex;
+    justify-content: space-between;
+}
 section h2{
     font-size: 2.4rem;
     margin-bottom: 16px;
