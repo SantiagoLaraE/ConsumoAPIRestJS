@@ -1,9 +1,9 @@
 const API_URL_RANDOM =
-  "https://api.thecatapi.com/v1/images/search?limit=3&api_key=202375a2-f56a-4091-8c61-edc226939576";
+  "https://api.thecatapi.com/v1/images/search?limit=3";
 const API_URL_FAVORITES =
-  "https://api.thecatapi.com/v1/favourites?api_key=202375a2-f56a-4091-8c61-edc226939576";
+  "https://api.thecatapi.com/v1/favourites";
 const API_URL_FAVORITES_DELETE = (id) =>
-  `https://api.thecatapi.com/v1/favourites/${id}?api_key=202375a2-f56a-4091-8c61-edc226939576`;
+  `https://api.thecatapi.com/v1/favourites/${id}`;
 const spanError = document.getElementById("error");
 
 /*
@@ -28,7 +28,6 @@ button.onclick = () => {renderCat()};
 async function loadRandomCats() {
   const response = await fetch(API_URL_RANDOM);
   const cats = await response.json();
-  console.log(cats)
 
   const section = document.getElementById("randomCats");
 
@@ -76,7 +75,12 @@ async function loadRandomCats() {
 loadRandomCats();
 
 async function loadFavoritesCats() {
-  const response = await fetch(API_URL_FAVORITES);
+  const response = await fetch(API_URL_FAVORITES, {
+    method: 'GET',
+    headers: {
+      'x-api-key': '202375a2-f56a-4091-8c61-edc226939576',
+    }
+  });
   const data = await response.json();
 
   if (response.status !== 200) {
@@ -123,6 +127,7 @@ async function saveFavoriteCat(id) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      'x-api-key': '202375a2-f56a-4091-8c61-edc226939576',
     },
     body: JSON.stringify({
       image_id: id,
@@ -140,6 +145,9 @@ async function saveFavoriteCat(id) {
 async function deleteFavoriteCat(id) {
   const res = await fetch(API_URL_FAVORITES_DELETE(id), {
     method: "DELETE",
+    headers: {
+      'x-api-key': '202375a2-f56a-4091-8c61-edc226939576',
+    }
   });
 
   const data = res.json();
