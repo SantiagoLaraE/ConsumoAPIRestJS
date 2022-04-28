@@ -40,15 +40,22 @@ section h2{
 #randomCats .randomCats__container{
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
     grid-gap: 16px;
+    justify-content: center;
+}
+#randomCats .randomCats__container article{
+    display: flex;
+    flex-direction: column;
 }
 #randomCats .randomCats__container article img{
     width: 100%;
-    height: 400px;
+    height: 100%;
+    max-height: 300px;
     object-fit: cover;
     border-radius: 8px;
     transition: var(--a-ease);
+    margin-bottom: 16px;
 }
 #randomCats .randomCats__container article:hover img{
     box-shadow: 0px 0px 16px rgba(0,0,0,0.2);
