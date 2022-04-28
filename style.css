@@ -80,3 +80,6 @@ section h2{
     background-color: var(--light-orange);
 }
 
+.thumbnail{
+    width: 250px;
+}

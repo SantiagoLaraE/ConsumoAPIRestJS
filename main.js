@@ -1,9 +1,10 @@
 const API_URL_RANDOM =
   "https://api.thecatapi.com/v1/images/search?limit=3";
 const API_URL_FAVORITES =
-  "https://api.thecatapi.com/v1/favourites";
+"https://api.thecatapi.com/v1/favourites";
 const API_URL_FAVORITES_DELETE = (id) =>
-  `https://api.thecatapi.com/v1/favourites/${id}`;
+`https://api.thecatapi.com/v1/favourites/${id}`;
+const API_URL_IMG_UPLOAD = "https://api.thecatapi.com/v1/images/upload";
 const spanError = document.getElementById("error");
 
 /*
@@ -120,6 +121,7 @@ async function loadFavoritesCats() {
     section.appendChild(sectionContainer);
   }
 }
+
 loadFavoritesCats();
 
 async function saveFavoriteCat(id) {
@@ -156,5 +158,46 @@ async function deleteFavoriteCat(id) {
     spanError.innerHTML = `Lo siento hubo un error: ${res.status} ${data.message}`;
   } else {
     loadFavoritesCats();
+  }
+}
+async function uploadCatPhoto(){
+  const form = document.getElementById('uploadingFormCat');
+  
+  const formData = new FormData(form);
+
+  const res = await fetch(API_URL_IMG_UPLOAD, {
+    method: 'POST',
+    headers: {
+      'x-api-key': '202375a2-f56a-4091-8c61-edc226939576',
+    },
+    body: formData,
+  });
+
+  const data = await res.json();
+
+  if (res.status !== 201) {
+    spanError.innerHTML = `Hubo un error: ${res.status} ${data.message}.`;
+  } else {
+    console.log('Imagen subida!');
+    console.log(data);
+    console.log(data.url);
+    saveFavoriteCat(data.id);
+  }
+
+}
+
+function loadThumbnail(n){
+  const form = document.getElementById('uploadingFormCat');
+  if(n[0] === undefined){
+    form.childNodes[0].src = "";
+  }else{
+    if(form.childNodes[0].tagName === 'IMG'){
+      form.childNodes[0].src = URL.createObjectURL(n[0])
+    }else{
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(n[0])
+      img.classList.add('thumbnail');
+      form.prepend(img);
+    }
   }
 }
