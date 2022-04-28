@@ -37,18 +37,18 @@ section h2{
     border-bottom: 2px solid var(--orange);
 }
 
-#randomCats .randomCats__container{
+.section__container{
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
     grid-gap: 16px;
     justify-content: center;
 }
-#randomCats .randomCats__container article{
+.section__container article{
     display: flex;
     flex-direction: column;
 }
-#randomCats .randomCats__container article img{
+.section__container article img{
     width: 100%;
     height: 100%;
     max-height: 300px;
@@ -57,10 +57,11 @@ section h2{
     transition: var(--a-ease);
     margin-bottom: 16px;
 }
-#randomCats .randomCats__container article:hover img{
+.section__container article:hover img{
     box-shadow: 0px 0px 16px rgba(0,0,0,0.2);
+    transform: scale(1.01);
 }
-.btn_f_save{
+.btn-primary{
     background-color: var(--orange);
     padding: 12px 16px;
     border-radius: 8px;
@@ -71,7 +72,7 @@ section h2{
     cursor: pointer;
 }
 
-.btn_f_save:hover{
+.btn-primary:hover{
     background-color: var(--light-orange);
 }
 
