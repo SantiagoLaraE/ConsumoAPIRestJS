@@ -1,3 +1,9 @@
+const api = axios.create({
+  baseURL: 'https://api.thecatapi.com/v1',
+});
+
+api.defaults.headers.common['X-API-KEY'] = '202375a2-f56a-4091-8c61-edc226939576';
+
 const API_URL_RANDOM =
   "https://api.thecatapi.com/v1/images/search?limit=3";
 const API_URL_FAVORITES =
@@ -125,6 +131,11 @@ async function loadFavoritesCats() {
 loadFavoritesCats();
 
 async function saveFavoriteCat(id) {
+  const {data, status} = await api.post('/favourites', {
+    image_id: id,
+  });
+
+  /*
   const res = await fetch(API_URL_FAVORITES, {
     method: "POST",
     headers: {
@@ -135,10 +146,11 @@ async function saveFavoriteCat(id) {
       image_id: id,
     }),
   });
-  const data = res.json();
-
-  if (res.status !== 200) {
-    spanError.innerHTML = `Lo siento hubo un error: ${res.status} ${data.message}`;
+  const data = await res.json();
+  */
+  console.log(data, status)
+  if (status !== 200) {
+    spanError.innerHTML = `Lo siento hubo un error: ${status} ${data.message}`;
   } else {
     loadFavoritesCats();
   }
