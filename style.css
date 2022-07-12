@@ -229,6 +229,7 @@ section {
   padding: 16px;
   transition: all .3s ease;
   transform: translateY(100px);
+  overflow-y: scroll;
 
 }
 .modal.opened .modal-container{
