@@ -356,7 +356,7 @@ footer {
     transform: translateX(0);
     opacity: 1;
   }
-  .navbar ul .nav-link {
+  .navbar .nav .nav-link {
     margin-left: 0;
     margin-bottom: 32px;
     display: inline-block;
