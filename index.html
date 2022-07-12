@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice Cat Api</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="navbar-container container">
+        <h1 class="navbar-title">Practice Cat Api</h1>
+        <nav>
+          <ul>
+            <li><a class="nav-link" href="#random-cats">Random Cats</a></li>
+            <li><a id="favorite-cats-link" class="nav-link" href="#" >Your favorite Cats</a></li>
+            <li><a id="upload-image-link" class="nav-link" href="#">Upload an image</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="cats section" id="random-cats">
+        <header class="section-header">
+          <div class="section-header__container container">
+            <h2 class="section-title">Random Cats</h2>
+          <button class="btn-primary" id="more-cats-btn">Get more Cats</button>
+          </div>
+        </header>
+        <div class="container">
+          <div class="cats__container">
+            <!-- <figure class="cat">
+              <img class="cat-img"
+                src="https://cdn2.thecatapi.com/images/bAiN3T-rs.jpg"
+                alt=""
+              />
+              <button class="favorite-btn">
+                <img src="./img/favorite.svg" alt="heart favorite icon">
+              </button>
+            </figure> -->
+          </div>
+        </div>
+      </section>
+
+      <div class="modal">
+        <div class="modal-container container">
+          <span class="modal-closer">
+          </span>
+          <header class="modal-header">
+            <h2 class="modal-header__title">Your favorite cats</h2>
+          </header>
+          <div class="modal-body">
+            
+          </div>
+        </div>
+      </div>
+      
+    </main>
+
+    <div class="notification">
+      <div class="notification-container  container">
+        <div class="notification-content"></div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <p>© All rights reserved | Santiago Lara 2022</p>
+      </div>
+    </footer>
+    <script src="index.js"></script>
+  </body>
+</html>

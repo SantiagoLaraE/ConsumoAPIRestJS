@@ -1,0 +1,345 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Josefin Sans", sans-serif;
+  scroll-behavior: smooth;
+}
+html.no-scroll{
+    overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #000;
+}
+main {
+  min-height: 80vh;
+}
+
+h2 {
+  font-size: 3.2rem;
+}
+button {
+  border: none;
+  font-size: 1.8rem;
+  font-family: "Josefin Sans", sans-serif;
+  cursor: pointer;
+}
+.container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+ul {
+  list-style-type: none;
+}
+p {
+  font-size: 1.8rem;
+}
+section {
+  padding-bottom: 54px;
+}
+
+/*Header - navbar*/
+
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #bdbdbd;
+}
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items: center;
+}
+.navbar .navbar-title {
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+.navbar ul {
+  display: flex;
+}
+.navbar ul .nav-link {
+  margin-left: 32px;
+  position: relative;
+}
+.navbar ul .nav-link::before {
+  content: "";
+  display: inline-block;
+  width: 0%;
+  height: 2px;
+  background-color: transparent;
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+.navbar ul .nav-link:hover::before {
+  background-color: #000;
+  width: 100%;
+}
+
+/*Sections*/
+.section-header {
+  position: sticky;
+  top: -22px;
+  padding: 54px 0 32px;
+  z-index: 50;
+  width: 100%;
+  background-color: #fff;
+}
+.section-header__container {
+  display: flex;
+  justify-content: space-between;
+}
+.section-title {
+  font-size: 3.2rem;
+  font-weight: 400;
+}
+.btn-primary {
+  background-color: #000;
+  font-size: 1.8rem;
+  color: #fff;
+  padding: 1.2rem;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+}
+/*Random Cats*/
+
+.cats__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 16px;
+}
+.cat {
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  min-height: 200px;
+  max-height: 300px;
+  position: relative;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+.cat img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: top;
+}
+.cat .favorite-btn,
+.cat .delete-btn {
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  background-color: #fff;
+  padding: 1.2rem;
+  display: inline-block;
+  border-radius: 0.8rem;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+.cat .favorite-btn:hover,
+.cat .delete-btn:hover{
+    transform: scale(0.9);
+}
+.cat .delete-btn {
+  background-color: red;
+}
+
+.cat .favorite-btn img,
+.cat .delete-btn img {
+  vertical-align: top;
+  width: 32px;
+}
+
+/*Modal*/
+
+.modal {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100vh;
+  z-index: 100;
+  top: 0;
+  transition: all 0.3s ease;
+  display: none;
+}
+
+.modal.opened {
+  display: block;
+}
+.modal .modal-closer {
+  width: 32px;
+  height: 32px;
+  background-color: #000;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: all 0.5s ease;
+  border: 1px solid #000;
+}
+.modal .modal-closer::before,
+.modal .modal-closer::after {
+  content: "";
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+  display: inline-block;
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  transition: all 0.5s ease;
+}
+.modal .modal-closer:hover {
+  background-color: #fff;
+}
+.modal .modal-closer:hover::before,
+.modal .modal-closer:hover::after {
+  background-color: #000;
+}
+.modal .modal-closer:hover::before {
+  transform: rotate(45deg);
+}
+.modal .modal-closer:hover::after {
+  transform: rotate(-45deg);
+}
+
+.modal .modal-container {
+  background-color: #fff;
+  height: 85vh;
+  min-height: 320px;
+  margin-top: 54px;
+  padding: 16px;
+  animation-name: modalAnimation;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  overflow-y: scroll;
+}
+
+@keyframes modalAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal .modal-header {
+  text-align: center;
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+.modal .modal-header h2{
+    font-weight: 400;
+  }
+
+
+  /*Notification*/
+
+.notification{
+    position: fixed;
+    bottom: 32px;
+    width: 100%;
+    z-index: 200;
+    text-align: center;
+    display: none;
+    transition: all .3s ease;
+    animation-name: notification;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes notification {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+    
+}
+.notification.opened{
+    display: block;
+    transition: all .3s ease;
+    
+}
+.notification .notification-content{
+    font-weight: 400;
+    font-size: 2.2rem;
+    padding: 16px;
+    display: inline-block;
+    border-radius: 0.8rem;
+    box-shadow: 0 0 32px rgba(0, 0, 0, 0.4);
+}
+.notification .notification-content.info{
+    background-color: #FFF;
+    color: #000;
+}
+.notification .notification-content.danger{
+    background-color: red;
+    color: #FFF;
+}
+
+/*Form*/
+.upload-img{
+    display: flex;
+    justify-content: center;
+}
+
+.upload-img .col-1{
+    width: 70%;
+}
+.upload-img .col-2{
+    width: 30%;
+    min-width: 250px;
+}
+.upload-img .col-2 img{
+    width: 100%;
+    vertical-align: top;
+}
+
+.upload-img input[type="file"]{
+    display: none;
+}
+.upload-img input[type="file"] + label{
+    min-height: 400px;
+    max-height:800px ;
+    border: 2px dashed #bdbdbd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 32px;
+    margin-bottom: 32px;
+}
+.upload-img input[type="file"] + label span{
+    font-size: 4.2rem;
+    font-weight: normal;
+}
+
+/*Footer*/
+
+footer {
+  height: 80px;
+  border-top: 1px solid #bdbdbd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1232px) {
+    .container{
+        padding: 0 16px;
+    }
+}
