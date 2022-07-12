@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+    <title>Gatos aleatorios</title>
+  </head>
+  <body>
+
+    <h1>Gatapp</h1>   
+
+    <span id="error"></span>
+
+    <section id="uploadCat">
+      <h2>Sube la foto de tu gato</h2>
+      <form id="uploadingFormCat">
+        <input type="file" name="file" id="file" onchange="loadThumbnail(this.files)">
+        <button type="button" onclick="uploadCatPhoto()">Enviar foto</button>
+      </form>
+    </section>
+
+    <section id="randomCats">
+      <div class="randomCats__title">
+        <h2>Gatos Aleatorios</h2>
+        <button id="loadRandomCats" class="btn-primary">Recargar</button>
+      </div>
+    </section>
+
+    <section id="favoritesCats">
+    </section>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
