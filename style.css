@@ -9,8 +9,8 @@ html {
   font-family: "Josefin Sans", sans-serif;
   scroll-behavior: smooth;
 }
-html.no-scroll{
-    overflow: hidden;
+html.no-scroll {
+  overflow: hidden;
 }
 
 a {
@@ -52,6 +52,9 @@ section {
   background-color: #fff;
   border-bottom: 1px solid #bdbdbd;
 }
+.navbar .mobile-nav {
+  display: none;
+}
 .navbar-container {
   display: flex;
   justify-content: space-between;
@@ -62,14 +65,14 @@ section {
   font-size: 2.4rem;
   font-weight: 400;
 }
-.navbar ul {
+.navbar .nav {
   display: flex;
 }
-.navbar ul .nav-link {
+.navbar .nav .nav-link {
   margin-left: 32px;
   position: relative;
 }
-.navbar ul .nav-link::before {
+.navbar .nav .nav-link::before {
   content: "";
   display: inline-block;
   width: 0%;
@@ -81,7 +84,7 @@ section {
   transform: translateX(-50%);
   transition: all 0.3s ease;
 }
-.navbar ul .nav-link:hover::before {
+.navbar .nav .nav-link:hover::before {
   background-color: #000;
   width: 100%;
 }
@@ -150,8 +153,8 @@ section {
   transition: all 0.3s ease;
 }
 .cat .favorite-btn:hover,
-.cat .delete-btn:hover{
-    transform: scale(0.9);
+.cat .delete-btn:hover {
+  transform: scale(0.9);
 }
 .cat .delete-btn {
   background-color: red;
@@ -170,14 +173,16 @@ section {
   background-color: rgba(0, 0, 0, 0.8);
   width: 100%;
   height: 100vh;
-  z-index: 100;
+  z-index: 200;
   top: 0;
   transition: all 0.3s ease;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .modal.opened {
-  display: block;
+  visibility: initial;
+  opacity: 1;
 }
 .modal .modal-closer {
   width: 32px;
@@ -187,7 +192,7 @@ section {
   position: absolute;
   top: 0;
   right: 0;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
   border: 1px solid #000;
 }
 .modal .modal-closer::before,
@@ -222,21 +227,12 @@ section {
   min-height: 320px;
   margin-top: 54px;
   padding: 16px;
-  animation-name: modalAnimation;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-in-out;
-  overflow-y: scroll;
-}
+  transition: all .3s ease;
+  transform: translateY(100px);
 
-@keyframes modalAnimation {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+}
+.modal.opened .modal-container{
+    transform: translateY(0);
 }
 
 .modal .modal-header {
@@ -244,88 +240,81 @@ section {
   padding-top: 24px;
   padding-bottom: 16px;
 }
-.modal .modal-header h2{
-    font-weight: 400;
-  }
-
-
-  /*Notification*/
-
-.notification{
-    position: fixed;
-    bottom: 32px;
-    width: 100%;
-    z-index: 200;
-    text-align: center;
-    display: none;
-    transition: all .3s ease;
-    animation-name: notification;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in-out;
+.modal .modal-header h2 {
+  font-weight: 400;
 }
 
-@keyframes notification {
-    0%{opacity: 0;}
-    100%{opacity: 1;}
-    
+/*Notification*/
+
+.notification {
+  position: fixed;
+  bottom: 32px;
+  width: 100%;
+  z-index: 200;
+  text-align: center;
+  transition: all 0.3s ease;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(50px);
 }
-.notification.opened{
-    display: block;
-    transition: all .3s ease;
-    
+
+.notification.opened {
+  visibility: initial;
+  opacity: 1;
+  transform: translateY(0);
 }
-.notification .notification-content{
-    font-weight: 400;
-    font-size: 2.2rem;
-    padding: 16px;
-    display: inline-block;
-    border-radius: 0.8rem;
-    box-shadow: 0 0 32px rgba(0, 0, 0, 0.4);
+.notification .notification-content {
+  font-weight: 400;
+  font-size: 2.2rem;
+  padding: 16px;
+  display: inline-block;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.4);
 }
-.notification .notification-content.info{
-    background-color: #FFF;
-    color: #000;
+.notification .notification-content.info {
+  background-color: #fff;
+  color: #000;
 }
-.notification .notification-content.danger{
-    background-color: red;
-    color: #FFF;
+.notification .notification-content.danger {
+  background-color: red;
+  color: #fff;
 }
 
 /*Form*/
-.upload-img{
-    display: flex;
-    justify-content: center;
+.upload-img {
+  display: flex;
+  justify-content: center;
 }
 
-.upload-img .col-1{
-    width: 70%;
+.upload-img .col-1 {
+  width: 70%;
 }
-.upload-img .col-2{
-    width: 30%;
-    min-width: 250px;
+.upload-img .col-2 {
+  width: 30%;
+  min-width: 250px;
 }
-.upload-img .col-2 img{
-    width: 100%;
-    vertical-align: top;
+.upload-img .col-2 img {
+  width: 100%;
+  vertical-align: top;
 }
 
-.upload-img input[type="file"]{
-    display: none;
+.upload-img input[type="file"] {
+  display: none;
 }
-.upload-img input[type="file"] + label{
-    min-height: 400px;
-    max-height:800px ;
-    border: 2px dashed #bdbdbd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 32px;
-    margin-bottom: 32px;
+.upload-img input[type="file"] + label {
+  min-height: 400px;
+  max-height: 800px;
+  border: 2px dashed #bdbdbd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 32px;
+  margin-bottom: 32px;
 }
-.upload-img input[type="file"] + label span{
-    font-size: 4.2rem;
-    font-weight: normal;
+.upload-img input[type="file"] + label span {
+  font-size: 4.2rem;
+  font-weight: normal;
 }
 
 /*Footer*/
@@ -339,7 +328,61 @@ footer {
 }
 
 @media screen and (max-width: 1232px) {
-    .container{
-        padding: 0 16px;
-    }
+  .container {
+    padding: 0 16px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .navbar .nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #fff;
+    width: 100%;
+    height: 100vh;
+    transition: all 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100vw);
+  }
+  .navbar .nav.active {
+    visibility: initial;
+    transform: translateX(0);
+    opacity: 1;
+  }
+  .navbar ul .nav-link {
+    margin-left: 0;
+    margin-bottom: 32px;
+    display: inline-block;
+    position: relative;
+  }
+  .navbar .mobile-nav {
+    position: relative;
+    display: block;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 110;
+  }
+  .navbar .mobile-nav div {
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    margin: 6px 0;
+    transition: all 0.5s ease;
+  }
+  .navbar .mobile-nav.active div:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  .navbar .mobile-nav.active div:nth-child(2) {
+    transform: scale(0);
+  }
+  .navbar .mobile-nav.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
 }

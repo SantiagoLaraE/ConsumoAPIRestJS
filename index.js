@@ -248,3 +248,30 @@ modalCloser.addEventListener("click", function (e) {
   e.preventDefault();
   closeModal();
 });
+
+const mobileNavBtn = document.querySelector(".mobile-nav");
+const navMobile = document.querySelector(".navbar .nav");
+
+mobileNavBtn.addEventListener("click", () => {
+  if (mobileNavBtn.classList.contains("active")) {
+    hideMobileNav();
+  } else {
+    showMobileNav()
+  }
+});
+
+function hideMobileNav() {
+  mobileNavBtn.classList.remove("active");
+  navMobile.classList.remove("active");
+}
+function showMobileNav() {
+  mobileNavBtn.classList.add("active");
+  navMobile.classList.add("active");
+}
+
+const navLinks = document.querySelectorAll('.nav .nav-link');
+navLinks.forEach(link => {
+  link.addEventListener('click', function () {
+    hideMobileNav()
+  })
+});
